@@ -36,6 +36,3 @@ python evaluate_mtl5.py \
 * Training results are saved in the `results/` directory
 * Training logs are saved in the `logs/` directory
 
----
-
-Would you like me to also make the **shell commands and file paths more generic** (e.g., not tied to `mtl5` or `Llama-2-7b-hf`) so the instructions can be reused for other models and configs?
