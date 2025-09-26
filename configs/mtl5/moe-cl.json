@@ -1,0 +1,28 @@
+{
+    "cutoff_len": 4096,
+    "benchmark": "mtl5",
+    "lora": [
+        {
+            "name": "moe-cl",
+            "lr": 0.0002,
+            "num_epochs": 3,
+            "batch_size": 8,
+            "test_batch_size": 128,
+            "r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.05,
+            "target_modules": {
+                "q_proj": false,
+                "k_proj": false,
+                "v_proj": false,
+                "o_proj": false,
+                "w1_proj": true,
+                "w2_proj": true,
+                "w3_proj": true
+            },
+            "num_experts": 5,
+            "group_by_length": true,
+            "expand_side": "right"
+        }
+    ]
+}

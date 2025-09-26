@@ -1,0 +1,14 @@
+torch>=2.1.2
+datasets
+evaluate
+accelerate
+transformers
+sentencepiece
+huggingface_hub
+scikit-learn
+gradio==4.11.0
+peft==0.10.0
+pandas
+fire
+nvitop
+lightning
