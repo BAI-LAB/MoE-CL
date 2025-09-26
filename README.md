@@ -1,6 +1,3 @@
-Here’s your document fully translated into English:
-
----
 
 # MoE-CL: Mixture-of-Experts Continual Learning Framework
 
