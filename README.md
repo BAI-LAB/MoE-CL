@@ -1,5 +1,5 @@
 
-# MoE-CL: Mixture-of-Experts Continual Learning Framework
+# MoE-CL
 
 ## Environment Setup
 
