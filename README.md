@@ -1,5 +1,6 @@
-
 # MoE-CL
+
+Mixture-of-Experts for Continual Learning on MTL5 benchmark.
 
 ## Environment Setup
 
@@ -19,20 +20,38 @@ Run the full continual learning training (including random initialization baseli
 bash scripts/mtl5/run_moe-cl.sh
 ```
 
-## Evaluation
+## Evaluation Metrics
 
-Evaluate the trained model:
+After training, calculate the continual learning metrics (ACC, BWT, FWT):
 
 ```bash
-python evaluate_mtl5.py \
-    --base_model ../model/Llama-2-7b-hf \
-    --config configs/mtl5/moe-cl.json \
+# Calculate metrics for order1
+python calculate_bwt_fwt.py \
+    --log_file results/moe-cl/mtl5/order1/log.txt \
+    --order order1
+
+# With random initialization baseline for FWT calculation
+python calculate_bwt_fwt.py \
+    --log_file results/moe-cl/mtl5/order1/log.txt \
     --order order1 \
-    --load_adapter_file agnews_finetuned
+    --random_init_log results/moe-cl/mtl5/rand_init/log.txt
 ```
 
-### Output Results
+### Metrics Explanation
 
-* Training results are saved in the `results/` directory
-* Training logs are saved in the `logs/` directory
+| Metric | Description |
+|--------|-------------|
+| **ACC** | Average accuracy across all tasks after learning the final task |
+| **BWT** | Backward Transfer — measures forgetting (negative = forgetting occurred) |
+| **FWT** | Forward Transfer — measures knowledge transfer to new tasks (positive = helpful) |
 
+### Available Task Orders
+
+- `order1`: DBPedia → Amazon → Yahoo → AGNews
+- `order2`: DBPedia → Amazon → AGNews → Yahoo
+- `order3`: Yahoo → Amazon → AGNews → DBPedia
+
+## Output
+
+- Training results and model checkpoints: `results/` directory
+- Training logs: `logs/` directory
